@@ -1,5 +1,5 @@
 import ray
-from model import LLMPredictor
+from model.gemma_model_vllm import LLMPredictor
 
 
 ## Data Paths

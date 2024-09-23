@@ -1,13 +1,14 @@
-from vllm import LLM, PromptInputs, TextPrompt
+from vllm import LLM, SamplingParams, TextPrompt
 from typing import Dict, List, Sequence
 import numpy as np
 from PIL import Image
 
 class LLMPredictor:
-    def __init__(self, prompt="caption en", image_col="image", model_id = "google/paligemma-3b-mix-224"):
+    def __init__(self, prompt: str ="caption en", image_col: str="image", model_id: str = "google/paligemma-3b-mix-224", sampling_params: SamplingParams):
         self.prompt = prompt
         self.image_col = image_col
         self.model_id = model_id
+        self.sampling_params = sampling_params
 
         # Create an LLM.
         self.llm = LLM(
@@ -20,7 +21,7 @@ class LLMPredictor:
         # generated text, and other information.
         images = batch[self.image_col]
         inputs = [TextPrompt(**{"prompt":self.prompt, "multi_modal_data": {"image": Image.fromarray(images[i])}}) for i in range(images.shape[0])]
-        outputs = self.llm.generate(inputs = inputs)
+        outputs = self.llm.generate(inputs, sampling_params=self.sampling_params)
         generated_text = []
         for output in outputs:
             generated_text.append(' '.join([o.text for o in output.outputs]))
