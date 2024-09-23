@@ -1,22 +1,10 @@
 name: caption-job
 entrypoint: python main.py
-image_uri: anyscale/image/my-image:1 # (Optional) Exclusive with `containerfile`.
-compute_config: my-compute-config:1 # (Optional) An inline dictionary can also be provided.
-working_dir: /path/to/working_dir # (Optional) Defaults to `.`.
 excludes: # (Optional) List of files to exclude from being packaged up for the job.
     - .git
     - .env
     - .DS_Store
     - __pycache__
-requirements: # (Optional) List of requirements files to install. Can also be a path to a requirements.txt.
-    - emoji==1.2.0
-    - numpy==1.19.5
-env_vars: # (Optional) Dictionary of environment variables to set in the job.
-    MY_ENV_VAR: my_value
-    ANOTHER_ENV_VAR: another_value
-py_modules: # (Optional) A list of local directories or remote URIs that will be added to the Python path.
-    - /path/to/my_module
-    - s3://my_bucket/my_module
 cloud: anyscale-prod # (Optional) The name of the Anyscale Cloud.
 project: my-project # (Optional) The name of the Anyscale Project.
 max_retries: 3 # (Optional) Maximum number of times the job will be retried before being marked failed. Defaults to `1`.

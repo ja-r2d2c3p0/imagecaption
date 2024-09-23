@@ -1,10 +1,10 @@
 from vllm import LLM, SamplingParams, TextPrompt
-from typing import Dict, List, Sequence
+from typing import Dict, List
 import numpy as np
 from PIL import Image
 
 class LLMPredictor:
-    def __init__(self, prompt: str ="caption en", image_col: str="image", model_id: str = "google/paligemma-3b-mix-224", sampling_params: SamplingParams):
+    def __init__(self, sampling_params: SamplingParams=SamplingParams(), prompt: str ="caption en", image_col: str="image", model_id: str = "google/paligemma-3b-mix-224"):
         self.prompt = prompt
         self.image_col = image_col
         self.model_id = model_id
