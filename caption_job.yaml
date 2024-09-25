@@ -1,0 +1,10 @@
+name: caption-job
+entrypoint: python main.py
+excludes: # (Optional) List of files to exclude from being packaged up for the job.
+    - .git
+    - .env
+    - .DS_Store
+    - __pycache__
+cloud: anyscale-prod # (Optional) The name of the Anyscale Cloud.
+project: my-project # (Optional) The name of the Anyscale Project.
+max_retries: 3 # (Optional) Maximum number of times the job will be retried before being marked failed. Defaults to `1`.
