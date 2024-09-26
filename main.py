@@ -1,6 +1,6 @@
 import ray
 from model.gemma_model_vllm import LLMPredictor
-from vllm import SamplingParams, sampling_params
+from vllm import SamplingParams
 
 ## Data Paths
 BASE_PATH = 's3://anyscale-customer-dataplane-data-production-us-east-2/artifact_storage/org_6687q89lgh27q3z41zesm2fsq6/cld_j25ipm5kli358v41pn9c96gjg3/BurberryData:john_:kpbdm'
